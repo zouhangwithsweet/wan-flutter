@@ -2,6 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:dio/dio.dart';
+Dio dio = new Dio();
+
+
+fetchDate () async {
+  Response response = await dio.get('https://ds.zouhaha.site/api/topics/latest.json');
+  print(response);
+}
+
 
 void main() => runApp(MyApp());
 
@@ -271,6 +279,7 @@ class _CounterWidgetState extends State<CounterWidget> {
     super.initState();
     //初始化状态  
     _counter = widget.initValue;
+    fetchDate();
     print("initState");
   }
 
